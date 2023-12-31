@@ -12,7 +12,7 @@ const NewPost = () => {
         entry.preventDefault();
         const post = {Category, title, body};
         setIsPending(true);
-        fetch('http://127.0.0.1:3000/api/v1/posts',{
+        fetch('http://127.0.0.1:3000/api/posts',{
             method:'POST',
             headers:{"Content-Type": "application/json" },
             body: JSON.stringify(post)

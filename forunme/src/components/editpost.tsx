@@ -1,44 +1,48 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useFetch, isData} from "../useFetch";
+import { useFetch} from "../useFetch";
+import { Post, isPost } from "../types/Posts";
 
 
 const EditPost = () => {
     const {id} = useParams();
-    const {data:post, error, isPending:fetchpending} = useFetch('http://127.0.0.1:3000/api/v1/posts/'+id)
+    const {data, error, isPending:fetchPending} = useFetch('http://127.0.0.1:3000/api/posts/'+id)
+    const post:Post = data.post
     const navigate =useNavigate();
     const [Category, setCategory] =useState(null);
-    const [title, setTitle] =useState<string>('');
-    const [body, setBody] = useState<string>('');
+    const [title, setTitle] =useState<string>("");
+    const [body, setBody] = useState<string>("");
     const [isPending,setIsPending] = useState<boolean>(false);
 
 
     const handleSubmit = (entry: any)=>{
         entry.preventDefault();
-        const post = {Category, title, body};
+        const editedpost = {Category, title, body};
         setIsPending(true);
-        fetch('http://127.0.0.1:3000/api/v1/posts/'+id,{
+        fetch('http://127.0.0.1:3000/api/posts/'+id,{
             method:'PUT',
             headers:{"Content-Type": "application/json" },
-            body: JSON.stringify(post)
+            body: JSON.stringify(editedpost)
         }).then(()=>
         console.log("post edited"));
         setIsPending(false);
         navigate('/');
     }
     useEffect(()=>{
-        if (isData(post)){
-        setTitle(post.title)
-        setBody(post.body)
+        if (post&&isPost(post)){
+            setTitle(post.Title)
+            setBody(post.Body)
         }
-    },[fetchpending])
+        
+    },[fetchPending])
+
     
     
     return ( 
         <div>
+        {fetchPending && <div>Loading...</div>}
         {error && <div>{error.message}</div>}
-        {fetchpending && <div>Loading...</div>}
-        {isData(post) &&
+        {post &&isPost(post)&&
         <form onSubmit={handleSubmit}>
             <label>Category: </label>
             <input></input>
