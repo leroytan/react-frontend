@@ -12,7 +12,8 @@ const Home = () => {
       <div>
         {error && <div>{error.message}</div>}
         {isPending && <div>Loading...</div>}
-        {posts && isPost(posts[0]) &&<Postslist posts ={posts}/>}
+        {posts && posts.length==0 && <div>There is no posts</div>}
+        {posts && posts.length!=0 && isPost(posts[0]) &&<Postslist posts ={posts}/>}
       </div>
     );
   }

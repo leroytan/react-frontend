@@ -6,5 +6,9 @@ export type Post = {
     CreatedAt:string
   }
   export function isPost(data: Post|Post[]): data is Post {
-    return (data as Post).ID !== undefined;
+    if ((data as Post).ID !== undefined){
+      return true
+    }else{
+      return false
+    };
   }

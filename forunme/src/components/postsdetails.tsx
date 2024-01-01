@@ -2,6 +2,7 @@ import {useFetch} from "../useFetch";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Post, isPost } from "../types/Posts";
+import Comments from "./comments";
 
 const PostDetails = ()=>{
     const {id} = useParams();
@@ -27,7 +28,7 @@ const PostDetails = ()=>{
                     <div>{post.Body}</div>
                     <Link to ={`/editpost/${post.ID}`}><button>Edit</button></Link>
                     <button onClick={handleDelete}>Delete</button>
-                    
+                    <Comments />
                 </article>
             )}
         </div>

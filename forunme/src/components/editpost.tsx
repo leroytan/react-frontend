@@ -29,12 +29,13 @@ const EditPost = () => {
         navigate('/');
     }
     useEffect(()=>{
+        
         if (post&&isPost(post)){
             setTitle(post.Title)
             setBody(post.Body)
         }
         
-    },[fetchPending])
+    },[data])
 
     
     
