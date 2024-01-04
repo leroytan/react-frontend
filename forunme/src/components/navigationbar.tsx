@@ -5,6 +5,8 @@ const NavigationBar = () => {
         <nav>
         <Link to ='/'>Home</Link>
         <Link to ='/newpost'>New Post</Link>
+        <Link to ='/signup'>Signup</Link>
+        <Link to ='/login'>Login</Link>
         </nav>
      );
 }
