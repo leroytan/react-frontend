@@ -25,7 +25,7 @@ const PostDetails = ()=>{
             {post &&isPost(post) &&(
                 <article>
                     <h2>{post.Title}</h2>
-                    <div>{post.Body}</div>
+                    <div>{post.Content}</div>
                     <Link to ={`/editpost/${post.ID}`}><button>Edit</button></Link>
                     <button onClick={handleDelete}>Delete</button>
                     <Comments />

@@ -8,6 +8,7 @@ import PostDetails from './components/postsdetails';
 import EditPost from './components/editpost';
 import Signup from './components/signup';
 import Login from './components/login';
+import Signout from './components/signout';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path = '/editpost/:id' element={<EditPost/>} />
         <Route path = '/signup' element={<Signup/>} />
         <Route path = '/login' element={<Login/>} />
+        <Route path = '/signout' element={<Signout/>} />
       </Routes>
     </div>
     

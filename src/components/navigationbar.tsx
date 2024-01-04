@@ -7,6 +7,7 @@ const NavigationBar = () => {
         <Link to ='/newpost'>New Post</Link>
         <Link to ='/signup'>Signup</Link>
         <Link to ='/login'>Login</Link>
+        <Link to ='/signout'>Signout</Link>
         </nav>
      );
 }

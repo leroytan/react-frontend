@@ -1,7 +1,7 @@
 export type Post = {
     ID: number;
     Title: string;
-    Body: string;
+    Content: string;
     UpdatedAt: string
     CreatedAt:string
   }

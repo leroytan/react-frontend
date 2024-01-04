@@ -14,7 +14,7 @@ const Postslist = (data:{posts: Post[]})=>{
           <div key={post.ID}>
             <Link to = {`/posts/${post.ID}`}>
             <h2>{post.Title}</h2>
-            <p>{post.Body}</p>
+            <p>{post.Content}</p>
             <p>{updatedate.toLocaleString()}</p>
             </Link>
           </div>

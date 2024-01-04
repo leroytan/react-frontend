@@ -43,7 +43,7 @@ const Login = () => {
             <input required value={password} onChange={(e)=> setPassword(e.target.value)}></input>
             <br/>
             <div>{err}</div>
-            <button onClick={handleSubmit}>Signup</button>
+            <button onClick={handleSubmit}>Login</button>
             </div>
      );
 }
