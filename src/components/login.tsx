@@ -49,7 +49,7 @@ export default function Login() {
     };
     setIsPending(true);
     try {
-      const response = await fetch("http://127.0.0.1:3000/api/login", {
+      const response = await fetch(process.env.REACT_APP_API_KEY+"/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(logininfo),
@@ -59,7 +59,7 @@ export default function Login() {
         const respjson = await response.json();
         throw respjson.error;
       } else {
-        const response = await fetch("http://127.0.0.1:3000/api/validate", {
+        const response = await fetch(process.env.REACT_APP_API_KEY+"/api/validate", {
           method: "GET",
           credentials: "include",
         });

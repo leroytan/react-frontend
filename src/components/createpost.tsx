@@ -19,7 +19,7 @@ export default function CreatePostPage(prop: {
         const data = new FormData(event.currentTarget);
         const post = {title:data.get("title"), content:data.get("content"), parentpostid:0};
         setIsPending(true);
-        fetch("http://127.0.0.1:3000/api/courses/"+prop.courseid+"/categories/"+prop.categoryid+"/subcategories/"+prop.subcategoryid+"/posts",{
+        fetch(process.env.REACT_APP_API_KEY+"/api/courses/"+prop.courseid+"/categories/"+prop.categoryid+"/subcategories/"+prop.subcategoryid+"/posts",{
             method:'POST',
             headers:{"Content-Type": "application/json" },
             body: JSON.stringify(post),

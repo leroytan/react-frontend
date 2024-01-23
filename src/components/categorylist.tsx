@@ -74,12 +74,12 @@ export const CategoryList = (prop: {
                     <Collapse in={open[dropindex]} timeout="auto" unmountOnExit>
                       {category.Subcategories &&
                         category.Subcategories.map(
-                          (subcategory: SubCategory, index: number) => {
+                          (subcategory: SubCategory) => {
                             return (
                               <ListItemButton
                                 sx={{ pl: 3 }}
                                 selected={subcategory.ID === selectedIndex}
-                                onClick={(event) => {
+                                onClick={() => {
                                   prop.handlechangeid(
                                     category.ID,
                                     subcategory.ID,

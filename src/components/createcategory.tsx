@@ -33,7 +33,7 @@ export default function AddCategoryDialog() {
           onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
             const formData = new FormData(event.currentTarget);
             const formJson = Object.fromEntries((formData as any).entries());
-            fetch("http://127.0.0.1:3000/api/admin/courses/"+courseid+"/categories/createcategory", {
+            fetch(process.env.REACT_APP_API_KEY+"/api/admin/courses/"+courseid+"/categories/createcategory", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(formJson),

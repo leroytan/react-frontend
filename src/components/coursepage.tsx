@@ -37,7 +37,7 @@ const CoursePage = () => {
     isPending: FetchPending,
     error,
   } = useFetch(
-    "http://127.0.0.1:3000/api/courses/" + courseid + "/categories/",
+    process.env.REACT_APP_API_KEY+"/api/courses/" + courseid + "/categories/",
     0
   );
   const categories: Category[] = data.categories;

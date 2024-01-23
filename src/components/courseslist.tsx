@@ -24,7 +24,7 @@ export const CoursesList = () => {
     data,
     isPending: FetchPending,
     error,
-  } = useFetch("http://127.0.0.1:3000/api/getusercourses", 0);
+  } = useFetch(process.env.REACT_APP_API_KEY+"/api/getusercourses", 0);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const courses: Course[] = data.courses;

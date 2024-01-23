@@ -47,7 +47,7 @@ export default function Signup() {
     };
     setIsPending(true);
     try {
-      const response = await fetch("http://127.0.0.1:3000/api/signup", {
+      const response = await fetch(process.env.REACT_APP_API_KEY+"/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signupinfo),

@@ -143,13 +143,13 @@ const Adduser = () => {
     data: allusers,
     isPending,
     error,
-  } = useFetch("http://127.0.0.1:3000/api/admin/users", 0);
+  } = useFetch(process.env.REACT_APP_API_KEY+"/api/admin/users", 0);
   const {
     data: courseusers,
     isPending: pending2,
     error: error2,
   } = useFetch(
-    "http://127.0.0.1:3000/api/admin/courses/" + courseid + "/getusers",
+    "/api/admin/courses/" + courseid + "/getusers",
     0
   );
   const [users, setUsers] = useState<User[]>();
@@ -171,7 +171,7 @@ const Adduser = () => {
   ) => {
     const userids = mockData.filter((item) => moveKeys.includes(item.key)).map((item)=>Number(item.title));
     if (direction === "right") {
-      fetch("http://127.0.0.1:3000/api/admin/courses/:courseid/addtocourse", {
+      fetch(process.env.REACT_APP_API_KEY+"/api/admin/courses/:courseid/addtocourse", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({userids:userids, courseid:Number(courseid)}),
@@ -182,7 +182,7 @@ const Adduser = () => {
         }
       });
     } else if (direction === "left") {
-      fetch("http://127.0.0.1:3000/api/admin/courses/:courseid/removefromcourse", {
+      fetch(process.env.REACT_APP_API_KEY+"/api/admin/courses/:courseid/removefromcourse", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({userids:userids, courseid:Number(courseid)}),

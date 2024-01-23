@@ -34,7 +34,7 @@ const Postlist = (prop: {
     setSelectedIndex(index);
   };
   const { data, isPending, error } = useFetch(
-    "http://127.0.0.1:3000/api/courses/" +
+    process.env.REACT_APP_API_KEY+"/api/courses/" +
       courseid +
       "/categories/" +
       categoryid +

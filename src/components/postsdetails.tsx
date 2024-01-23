@@ -51,7 +51,7 @@ const PostDetails = (prop: {
   const [users, setUsers] = useState<User[]>();
 
   const { data, isPending, error } = useFetch(
-    "http://127.0.0.1:3000/api/courses/" +
+    process.env.REACT_APP_API_KEY+"/api/courses/" +
       prop.courseid +
       "/categories/" +
       prop.categoryid +
@@ -66,7 +66,7 @@ const PostDetails = (prop: {
   const user: User = JSON.parse(userdata!).user;
   const handleDelete = () => {
     fetch(
-      "http://127.0.0.1:3000/api/courses/" +
+      process.env.REACT_APP_API_KEY+"/api/courses/" +
         prop.courseid +
         "/categories/" +
         prop.categoryid +
