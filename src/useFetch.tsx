@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 
 
-export const useFetch = (url: string) => {
+export const useFetch = (url: string, refresh:number) => {
   const [data, setData] = useState<Array<any>|any>([]);
   const [isPending, setIsPending] = useState<boolean>(true);
   const [error, setError] = useState<Error|null>(null);
@@ -13,7 +13,7 @@ export const useFetch = (url: string) => {
     
     const fetchData = async()=>{
       try{
-        const response =await fetch(url, {signal});
+        const response =await fetch(url, {credentials:'include', signal});
         if (!response.ok){
           throw Error("could not fetch that resource");
         }
@@ -44,7 +44,7 @@ export const useFetch = (url: string) => {
     fetchData()
     
     return ()=>{controller.abort()}
-},[url])
+},[url, refresh])
 
 
 return { data, isPending, error };

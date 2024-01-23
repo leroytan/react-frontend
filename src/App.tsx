@@ -1,35 +1,64 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from './home';
-import NavigationBar from './components/navigationbar';
-import NewPost from './components/newpost';
-import PostDetails from './components/postsdetails';
-import EditPost from './components/editpost';
-import Signup from './components/signup';
-import Login from './components/login';
-import Signout from './components/signout';
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Signout from "./components/signout";
+import { CoursesList } from "./components/courseslist";
+import CoursePage from "./components/coursepage";
+import RequireAuth from "./protectedroute";
+import NavBar from "./components/navbar";
+import Adduser from "./components/adduser";
+import Login from "./components/login";
+import Signup from "./components/signup";
 function App() {
-
   return (
     <Router>
-      <NavigationBar />
-    <div>
-      <Routes>
-        <Route path = '/' element={<Home/>} />
-        <Route path = '/newpost' element={<NewPost/>} />
-        <Route path = '/posts/:id' element={<PostDetails/>} />
-        <Route path = '/editpost/:id' element={<EditPost/>} />
-        <Route path = '/signup' element={<Signup/>} />
-        <Route path = '/login' element={<Login/>} />
-        <Route path = '/signout' element={<Signout/>} />
-      </Routes>
-    </div>
-    
+      <div>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signout" element={<Signout />} />
+          <Route path="/" element={<Navigate to="/courses" />} />
+          <Route
+            path="/courses"
+            element={
+              <RequireAuth>
+                <>
+                  <NavBar />
+                  <CoursesList />
+                </>
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/courses/:courseid/adduser"
+            element={
+              <RequireAuth>
+                <>
+                  <NavBar />
+                  <Adduser />
+                </>
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/courses/:courseid"
+            element={
+              <RequireAuth>
+                <>
+                  <NavBar />
+                  <CoursePage />
+                </>
+              </RequireAuth>
+            }
+          />
+        </Routes>
+      </div>
     </Router>
   );
 }
 
 export default App;
-

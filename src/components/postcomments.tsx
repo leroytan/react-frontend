@@ -1,0 +1,52 @@
+import { useState } from "react";
+import { Post } from "../types/posts";
+import { User } from "../types/user";
+import PostDetails, { finduserbyid } from "./postsdetails";
+import {
+  Button,
+  List,
+  ListItem,
+  ListItemButton,
+  ListSubheader,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+const Comments = (prop: {
+  courseid: number | undefined;
+  categoryid: number | undefined;
+  subcategoryid: number | undefined;
+  postid: number | undefined;
+  post: Post;
+  users: User[];
+  toggleedit: (bool: boolean) => void;
+  handlechangeid: (
+    courseid: number | undefined,
+    categoryid: number | undefined,
+    subcategoryid: number | undefined
+  ) => void;
+}) => {
+  return (
+    <div>
+      <br />
+      
+      
+        {prop.post.Comments.map((comment) => {
+          return (
+            <ListItem sx={{ pl: 20 }}>
+              <PostDetails
+                courseid={prop.courseid}
+                categoryid={prop.categoryid}
+                subcategoryid={prop.subcategoryid}
+                postid={comment.ID}
+                togglewarning={prop.toggleedit}
+                handlechangeid={prop.handlechangeid}
+              />
+            </ListItem>
+          );
+        })}
+      
+    </div>
+  );
+};
+
+export default Comments;
