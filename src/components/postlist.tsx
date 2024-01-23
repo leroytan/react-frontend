@@ -1,6 +1,6 @@
 import { useFetch } from "../useFetch";
 import { useState } from "react";
-import { Post, isPost } from "../types/posts";
+import { Post, isPost } from "../types/post";
 import {
   Box,
   List,

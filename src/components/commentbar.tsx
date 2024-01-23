@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
-import { Post } from "../types/posts";
+import { Post } from "../types/post";
 import { User } from "../types/user";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

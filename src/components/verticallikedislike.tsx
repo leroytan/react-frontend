@@ -5,7 +5,7 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { useEffect, useState } from "react";
 import { PollsOptionsVotes } from "../types/polloptions";
 import { User } from "../types/user";
-import { Post } from "../types/posts";
+import { Post } from "../types/post";
 import { Divider, Snackbar } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { pink, teal } from "@mui/material/colors";

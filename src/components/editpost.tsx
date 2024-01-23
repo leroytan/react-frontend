@@ -5,7 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 import { lightTheme } from "../theme";
 import { Alert, Box, Grid } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { Post, isPost } from "../types/posts";
+import { Post, isPost } from "../types/post";
 import { useFetch } from "../useFetch";
 
 export default function EditPostPage(prop: {

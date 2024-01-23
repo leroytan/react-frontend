@@ -1,4 +1,4 @@
-import { Post } from "../types/posts";
+import { Post } from "../types/post";
 import { User } from "../types/user";
 import PostDetails from "./postsdetails";
 import {

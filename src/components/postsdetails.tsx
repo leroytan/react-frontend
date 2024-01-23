@@ -1,7 +1,7 @@
 import { useFetch } from "../useFetch";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Post, isPost } from "../types/posts";
+import { Post, isPost } from "../types/post";
 import Comments from "./postcomments";
 import EditPost from "./editpost";
 import { User } from "../types/user";

@@ -1,4 +1,4 @@
-import { Post } from "./posts"
+import { Post } from "./post"
 
 export type Category = {
     ID: number
