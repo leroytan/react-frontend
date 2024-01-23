@@ -3,14 +3,12 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { useEffect, useState } from "react";
-import { PollsOptions, PollsOptionsVotes } from "../types/polloptions";
-import { useFetch } from "../useFetch";
+import { PollsOptionsVotes } from "../types/polloptions";
 import { User } from "../types/user";
 import { Post } from "../types/posts";
-import { Box, Divider, Snackbar } from "@mui/material";
-import { Padding } from "@mui/icons-material";
+import { Divider, Snackbar } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { green, pink, red, teal } from "@mui/material/colors";
+import { pink, teal } from "@mui/material/colors";
 
 export default function VerticalLikeDislike(prop: {
   courseid: number | undefined;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Space, Switch, Table, Tag, Transfer } from "antd";
 import type {
   GetProp,

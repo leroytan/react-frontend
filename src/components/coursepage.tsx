@@ -1,14 +1,12 @@
 import { useParams } from "react-router-dom";
 import { CategoryList } from "./categorylist";
 import {
-  Alert,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Drawer,
   LinearProgress,
   ThemeProvider,
 } from "@mui/material";
@@ -19,7 +17,7 @@ import PostDetails from "./postsdetails";
 import { useFetch } from "../useFetch";
 import { Category } from "../types/category";
 import { lightTheme } from "../theme";
-import AddCategoryDialog from "../createcategory";
+import AddCategoryDialog from "./createcategory";
 import { useValidate } from "./validate";
 import { User } from "../types/user";
 import CreatePostPage from "./createpost";

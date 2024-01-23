@@ -1,15 +1,9 @@
-import { useState } from "react";
 import { Post } from "../types/posts";
 import { User } from "../types/user";
-import PostDetails, { finduserbyid } from "./postsdetails";
+import PostDetails from "./postsdetails";
 import {
-  Button,
-  List,
   ListItem,
-  ListItemButton,
-  ListSubheader,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 const Comments = (prop: {
   courseid: number | undefined;

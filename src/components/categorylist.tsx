@@ -1,25 +1,19 @@
 import { useEffect, useState } from "react";
-import { useFetch } from "../useFetch";
 import { User } from "../types/user";
-import { Link, useParams } from "react-router-dom";
-import { Course } from "../types/course";
 import { Category, SubCategory } from "../types/category";
-import CoursePage from "./coursepage";
 import {
   Collapse,
   CssBaseline,
-  Grid,
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   ListSubheader,
   ThemeProvider,
 } from "@mui/material";
 import { lightTheme } from "../theme";
-import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
-import AddSubcategoryDialog from "../createsubcategory";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import AddSubcategoryDialog from "./createsubcategory";
 
 export const CategoryList = (prop: {
   courseid: number | undefined;

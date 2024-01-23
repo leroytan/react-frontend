@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useValidate } from "./validate";
-import { User } from "../types/user";
 
 
 const Signout = () => {

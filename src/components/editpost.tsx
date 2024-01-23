@@ -1,20 +1,25 @@
-import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import React, { useEffect, useState } from "react";
+import { ThemeProvider } from "@emotion/react";
+import { lightTheme } from "../theme";
+import { Alert, Box, Grid } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { useFetch } from "../useFetch";
 import { Post, isPost } from "../types/posts";
-import { Alert } from "@mui/material";
+import { useFetch } from "../useFetch";
 
-const EditPost = (prop: {
+export default function EditPostPage(prop: {
   courseid: number | undefined;
   categoryid: number | undefined;
   subcategoryid: number | undefined;
   postid: number | undefined;
+  toggleedit: (bool: boolean) => void
   handlechangeid: (
     courseid: number | undefined,
     categoryid: number | undefined,
     subcategoryid: number | undefined
   ) => void;
-}) => {
+}) {
   const { id } = useParams();
   const {
     data,
@@ -38,9 +43,12 @@ const EditPost = (prop: {
   const [content, setContent] = useState<string>("");
   const [isPending, setIsPending] = useState<boolean>(false);
 
-  const handleSubmit = (entry: any) => {
-    entry.preventDefault();
-    const editedpost = { Category, title, content };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const data = new FormData(event.currentTarget);
+    const editedpost = {
+      title: data.get("title"),
+      content: data.get("content"),
+    };
     setIsPending(true);
     fetch(
       "http://127.0.0.1:3000/api/courses/" +
@@ -59,7 +67,6 @@ const EditPost = (prop: {
       }
     ).then(() => console.log("post edited"));
     setIsPending(false);
-    navigate("/");
   };
   useEffect(() => {
     if (post && isPost(post)) {
@@ -69,39 +76,59 @@ const EditPost = (prop: {
   }, [data]);
 
   return (
-    <div>
-      <Alert severity="warning">
-        Do not leave while editing, contents will not be saved
-      </Alert>
-      <br />
-      {fetchPending && <div>Loading...</div>}
-      {error && <div>{error.message}</div>}
-      {post && isPost(post) && (
-        <form onSubmit={handleSubmit}>
-          <label>Category: </label>
-          <input></input>
+    <ThemeProvider theme={lightTheme}>
+      <React.Fragment>
+        <Alert severity="warning">
+          Do not leave while editing, contents will not be saved
+        </Alert>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="title"
+            label="Title"
+            name="title"
+            multiline
+            defaultValue={title}
+            InputLabelProps={{ shrink: true }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="content"
+            label="Content"
+            hiddenLabel
+            type="text"
+            id="content"
+            defaultValue={content}
+            InputLabelProps={{ shrink: true }}
+            multiline
+          />
+          <Grid
+            item
+            sx={{ justifyContent: "center", display: "flex", color: "darkred" }}
+          ></Grid>
 
-          <br />
-          <label>Title: </label>
-          <input
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          ></input>
-          <br />
-          <label>Content: </label>
-          <input
-            required
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          ></input>
-          <br />
-          {!isPending && <button>Edit Post</button>}
-          {isPending && <button disabled>Editing post...</button>}
-        </form>
-      )}
-    </div>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Confirm Edit
+          </Button>
+          <Button
+            onClick={()=>prop.toggleedit(false)}
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Cancel
+          </Button>
+        </Box>
+      </React.Fragment>
+    </ThemeProvider>
   );
-};
-
-export default EditPost;
+}

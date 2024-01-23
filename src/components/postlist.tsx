@@ -1,10 +1,8 @@
 import { useFetch } from "../useFetch";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Post, isPost } from "../types/posts";
 import {
-  Alert,
   Box,
-  Grid,
   List,
   ListItem,
   ListItemButton,

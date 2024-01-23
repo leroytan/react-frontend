@@ -9,7 +9,7 @@ import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import AddIcon from "@mui/icons-material/Add";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function AddCourseDialog() {
     

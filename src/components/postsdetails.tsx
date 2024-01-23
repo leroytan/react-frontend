@@ -25,7 +25,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import VerticalLikeDislike from "./verticallikedislike";
 import { PollsOptionsVotes } from "../types/polloptions";
 import Commentbar from "./commentbar";
-import EditPostPage from "./editpost2";
+import EditPostPage from "./editpost";
 
 export function finduserbyid(userids: User[], id: number) {
   for (let i = 0; i < userids.length; i = i + 1) {

@@ -1,5 +1,3 @@
-import { Navigate } from "react-router-dom";
-import { User } from "./types/user";
 import { FC } from "react";
 import { useValidate } from "./components/validate";
 import Login from "./components/login";
