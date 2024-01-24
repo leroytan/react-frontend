@@ -92,7 +92,7 @@ export default function Signup() {
               textDecoration: "none",
             }}
           >
-            FORUMN
+            FORUNME
           </Typography>
           <Typography component="h1" variant="h5">
             Sign up
