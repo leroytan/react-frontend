@@ -30,7 +30,9 @@ export const CategoryList = (prop: {
   opencategories[0] = true;
   const [open, setOpen] = useState<boolean[]>(opencategories);
   const [selectedIndex, setSelectedIndex] = useState(
-    prop.categories[0].Subcategories[0].ID
+    prop.categories[0].Subcategories.length != 0
+      ? prop.categories[0].Subcategories[0].ID
+      : undefined
   );
   const handleItemclick = (subcategoryid: number) => {
     setSelectedIndex(subcategoryid);

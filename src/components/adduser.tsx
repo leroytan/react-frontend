@@ -149,7 +149,7 @@ const Adduser = () => {
     isPending: pending2,
     error: error2,
   } = useFetch(
-    "/api/admin/courses/" + courseid + "/getusers",
+    process.env.REACT_APP_API_KEY+"/api/admin/courses/" + courseid + "/getusers",
     0
   );
   const [users, setUsers] = useState<User[]>();
@@ -214,7 +214,6 @@ const Adduser = () => {
 
   return (
     <>
-    {users&&
       <><TableTransfer
           dataSource={mockData}
           targetKeys={targetKeys}
@@ -230,7 +229,7 @@ const Adduser = () => {
               checkedChildren="showSearch"
               checked={showSearch}
               onChange={triggerShowSearch} />
-          </Space></>}
+          </Space></>
     </>
   );
 };
