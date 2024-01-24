@@ -13,7 +13,8 @@ export default function EditPostPage(prop: {
   categoryid: number | undefined;
   subcategoryid: number | undefined;
   postid: number | undefined;
-  toggleedit: (bool: boolean) => void
+  post: Post;
+  toggleedit: (bool: boolean) => void;
   handlechangeid: (
     courseid: number | undefined,
     categoryid: number | undefined,
@@ -26,7 +27,8 @@ export default function EditPostPage(prop: {
     error,
     isPending: fetchPending,
   } = useFetch(
-    process.env.REACT_APP_API_KEY+"/api/courses/" +
+    process.env.REACT_APP_API_KEY +
+      "/api/courses/" +
       prop.courseid +
       "/categories/" +
       prop.categoryid +
@@ -51,7 +53,8 @@ export default function EditPostPage(prop: {
     };
     setIsPending(true);
     fetch(
-      process.env.REACT_APP_API_KEY+"/api/courses/" +
+      process.env.REACT_APP_API_KEY +
+        "/api/courses/" +
         prop.courseid +
         "/categories/" +
         prop.categoryid +
@@ -82,17 +85,19 @@ export default function EditPostPage(prop: {
           Do not leave while editing, contents will not be saved
         </Alert>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="title"
-            label="Title"
-            name="title"
-            multiline
-            defaultValue={title}
-            InputLabelProps={{ shrink: true }}
-          />
+          {prop.post.ParentpostID == null && (
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="title"
+              label="Title"
+              name="title"
+              multiline
+              defaultValue={title}
+              InputLabelProps={{ shrink: true }}
+            />
+          )}
           <TextField
             margin="normal"
             required
@@ -120,7 +125,7 @@ export default function EditPostPage(prop: {
             Confirm Edit
           </Button>
           <Button
-            onClick={()=>prop.toggleedit(false)}
+            onClick={() => prop.toggleedit(false)}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}

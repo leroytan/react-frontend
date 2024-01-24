@@ -1,20 +1,14 @@
 import { useFetch } from "../useFetch";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Post, isPost } from "../types/post";
 import Comments from "./postcomments";
-import EditPost from "./editpost";
 import { User } from "../types/user";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ReplyIcon from "@mui/icons-material/Reply";
 import {
-  IconButton,
   ListItem,
-  Stack,
-  ToggleButton,
-  ToggleButtonGroup,
-  Tooltip,
   List,
   ButtonGroup,
   Button,
@@ -127,6 +121,7 @@ const PostDetails = (prop: {
                               categoryid={prop.categoryid}
                               subcategoryid={prop.subcategoryid}
                               postid={prop.postid}
+                              post={post}
                               toggleedit={toggleedit}
                               handlechangeid={prop.handlechangeid}
                             />
@@ -135,7 +130,7 @@ const PostDetails = (prop: {
                         {!editing && (
                           <>
                             <Grid xs={9.5} paddingBottom={5}>
-                              {post.ParentpostID == 0 && <h2>{post.Title}</h2>}
+                              {post.ParentpostID == null && <h2>{post.Title}</h2>}
                               <div>{finduserbyid(users!, post.UserID)}</div>
                               <div>
                                 Updated at:{" "}
@@ -205,7 +200,7 @@ const PostDetails = (prop: {
                         categoryid={prop.categoryid}
                         subcategoryid={prop.subcategoryid}
                         postid={prop.postid}
-                        post={post}
+                        post={post!}
                         users={users!}
                         toggleedit={prop.togglewarning}
                         handlechangeid={prop.handlechangeid}

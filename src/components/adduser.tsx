@@ -212,8 +212,7 @@ const Adduser = () => {
           .map((item) => item.key)
       );
     }
-    
-  }, [users]);
+  }, [users,courseusers]);
 
   return (
     <>

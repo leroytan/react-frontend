@@ -17,7 +17,7 @@ export default function CreatePostPage(prop: {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
         const data = new FormData(event.currentTarget);
-        const post = {title:data.get("title"), content:data.get("content"), parentpostid:0};
+        const post = {title:data.get("title"), content:data.get("content"), parentpostid:null};
         setIsPending(true);
         fetch(process.env.REACT_APP_API_KEY+"/api/courses/"+prop.courseid+"/categories/"+prop.categoryid+"/subcategories/"+prop.subcategoryid+"/posts",{
             method:'POST',
@@ -26,6 +26,7 @@ export default function CreatePostPage(prop: {
             credentials: "include"
         }).then(()=>
         console.log("new post added"));
+        window.location.reload();
         setIsPending(false);
         
     }

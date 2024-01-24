@@ -21,9 +21,7 @@ const Commentbar = (prop: {
     const [mycomment, setMycomment] = useState<string>("");
     const [isPending, setIsPending] = useState<boolean>(false);
     const [err, setErr] = useState<any>(null);
-    const navigate = useNavigate();
-    const handleSubmit = async (entry: any) => {
-        entry.preventDefault();
+    const handleSubmit = async () => {
         const Title = "";
         const Content = mycomment;
         const ParentpostID = prop.post.ID;
@@ -50,7 +48,7 @@ const Commentbar = (prop: {
             throw respjson.error;
           } else {
             setIsPending(false);
-            navigate("/");
+            window.location.reload();
           }
         } catch (error: any) {
           setIsPending(false);

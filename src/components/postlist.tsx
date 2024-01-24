@@ -27,7 +27,7 @@ const Postlist = (prop: {
   const courseid = prop.courseid;
   const categoryid = prop.categoryid;
   const subcategoryid = prop.subcategoryid;
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState<Number>();
   const handleItemclick = (
     index: number
   ) => {
