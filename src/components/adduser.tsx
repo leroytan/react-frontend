@@ -205,7 +205,7 @@ const Adduser = () => {
     }
   }, [allusers]);
   useEffect(() => {
-    if (users?.length!=0){
+    if (users?.length!=0 && courseusers.users){
       setTargetKeys(
         mockData
           .filter((item) => isUserincourse(Number(item.title), courseusers.users))
