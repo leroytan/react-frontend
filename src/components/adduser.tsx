@@ -205,11 +205,14 @@ const Adduser = () => {
     }
   }, [allusers]);
   useEffect(() => {
-    setTargetKeys(
-      mockData
-        .filter((item) => isUserincourse(Number(item.title), courseusers.users))
-        .map((item) => item.key)
-    );
+    if (users?.length!=0){
+      setTargetKeys(
+        mockData
+          .filter((item) => isUserincourse(Number(item.title), courseusers.users))
+          .map((item) => item.key)
+      );
+    }
+    
   }, [users]);
 
   return (
