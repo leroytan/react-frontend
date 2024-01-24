@@ -224,7 +224,7 @@ const CoursePage = () => {
               md={2.5}
               border={1}
               maxHeight={window.innerHeight}
-              overflow={"auto"}
+              overflow={"scroll"}
             >
               <Grid
                 sx={{

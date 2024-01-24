@@ -214,27 +214,23 @@ const Adduser = () => {
 
   return (
     <>
-      <TableTransfer
-        dataSource={mockData}
-        targetKeys={targetKeys}
-        showSearch={showSearch}
-        onChange={onChange}
-        filterOption={(inputValue, item) =>
-          item.title!.indexOf(inputValue) !== -1 ||
-          item.description.indexOf(inputValue) !== -1 ||
-          item.tag.indexOf(inputValue) !== -1
-        }
-        leftColumns={leftTableColumns}
-        rightColumns={rightTableColumns}
-      />
-      <Space style={{ marginTop: 16 }}>
-        <Switch
-          unCheckedChildren="showSearch"
-          checkedChildren="showSearch"
-          checked={showSearch}
-          onChange={triggerShowSearch}
-        />
-      </Space>
+    {users&&
+      <><TableTransfer
+          dataSource={mockData}
+          targetKeys={targetKeys}
+          showSearch={showSearch}
+          onChange={onChange}
+          filterOption={(inputValue, item) => item.title!.indexOf(inputValue) !== -1 ||
+            item.description.indexOf(inputValue) !== -1 ||
+            item.tag.indexOf(inputValue) !== -1}
+          leftColumns={leftTableColumns}
+          rightColumns={rightTableColumns} /><Space style={{ marginTop: 16 }}>
+            <Switch
+              unCheckedChildren="showSearch"
+              checkedChildren="showSearch"
+              checked={showSearch}
+              onChange={triggerShowSearch} />
+          </Space></>}
     </>
   );
 };
