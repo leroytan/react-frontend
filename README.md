@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# FORUNME
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This project has a backend at [https://github.com/leroytan/go-backend](https://github.com/leroytan/go-backend)
+
+This project has been deployed at [https://www.forunme.leroymx.com/](https://www.forunme.leroymx.com/)
 
 ## Available Scripts
 
